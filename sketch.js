@@ -21,9 +21,11 @@ function setup() {
 	trashcan2 = new Trashcan(950,365,200,30);
   trashcan3 = new Trashcan(1050,275,30,150);*/
   
-  trashcan = new Trashcan(1200,650);
+  trashcan = new dustbin(1200,650);
 
-	paper = new Paper(200,450,70);
+  paper = new Paper(200,400,70);
+  
+  //launcher = new Launcher(paper.body,{x:200, y:50});
 
 	Engine.run(engine);
   
@@ -32,7 +34,7 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background(0);
+  background(155);
   Engine.update(engine);
   ground.display();
   trashcan.display();
@@ -42,8 +44,14 @@ function draw() {
 
 function keyPressed() {
   if(keyCode === UP_ARROW) {
-    Matter.Body.applyForce(paper.body,paper.body.position,{x:130,y:-145});
+    Matter.Body.applyForce(paper.body,paper.body.position,{x:145,y:-145});
   }
 }
 
+/*function mouseDragged() {
+  Matter.body.setPosition(paper.body, {x: mouseX, y: mouseY});
+}
 
+function mouseReleased() {
+  launcher.fly();
+}*/
